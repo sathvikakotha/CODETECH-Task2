@@ -1,0 +1,65 @@
+def add_student(students, name):
+    if name in students:
+        print(f"Student {name} already exists.")
+    else:
+        students[name] = []
+        print(f"Student {name} added.")
+def add_grade(students, name, grade):
+    if name not in students:
+        print(f"Student {name} does not exist.")
+    else:
+        students[name].append(grade)
+        print(f"Added grade {grade} for student {name}.")
+def view_grades(students, name):
+    if name not in students:
+        print(f"Student {name} does not exist.")
+    else:
+        grades = students[name]
+        if grades:
+            print(f"Grades for {name}: {grades}")
+        else:
+            print(f"No grades recorded for {name}.")
+def calculate_average(students, name):
+    if name not in students:
+        print(f"Student {name} does not exist.")
+    else:
+        grades = students[name]
+        if grades:
+            average = sum(grades) / len(grades)
+            print(f"Average grade for {name} is {average:.2f}.")
+        else:
+            print(f"No grades recorded for {name}.")
+def main():
+    students = {}
+
+    while True:
+        print("\nStudent Grade Tracker")
+        print("1. Add Student")
+        print("2. Add Grade")
+        print("3. View Grades")
+        print("4. Calculate Average Grade")
+        print("5. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            name = input("Enter student name: ")
+            add_student(students, name)
+        elif choice == '2':
+            name = input("Enter student name: ")
+            grade = int(input("Enter grade: "))
+            add_grade(students, name, grade)
+        elif choice == '3':
+            name = input("Enter student name: ")
+            view_grades(students, name)
+        elif choice == '4':
+            name = input("Enter student name: ")
+            calculate_average(students, name)
+        elif choice == '5':
+            print("Exiting the program.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
